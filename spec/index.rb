@@ -39,9 +39,13 @@ def get_message(birth_path_num)
     end
 end
 
+get '/newpage' do
+	erb :newpage
+end
+
 get '/:birthdate' do
-birthdate = params[:birthdate]
-birth_path_num = get_birth_path_num(birthdate)
-message = get_message(birth_path_num)
-"#{message}"
+	birthdate = params[:birthdate]
+	birth_path_num = get_birth_path_num(birthdate)
+	@message = get_message(birth_path_num)
+  erb :index
 end
